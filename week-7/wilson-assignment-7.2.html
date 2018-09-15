@@ -15,40 +15,43 @@
 </head>
 
 <body>
+
     <div role="main" class="container"> <br /><br />
         <h2>Example 2 Recreated</h2>
 
         <div class="form-group">
-            <label for="txtFirstName">First Name: </label>
-            <input type="text" data-bind="value: firstName" class="form-control" id="txtFirstName" />
+            <label for="txtName">First Name: </label>
+            <input type="text" data-bind="value: name" class="form-control" id="txtName" />
         </div>
 
-        <div data-bind="if: firstName">
+        <div data-bind="if: displayName">
             <div class="form-group">
-                <label for="txtLastName">Last Name: </label>
-                <input type="text" data-bind="value: lastName" class="form-control" id="txtLastName" />
+                <label for="txtLast">Last Name: </label>
+                <input type="text" data-bind="value: last" class="form-control" id="txtLast" />
             </div>
         </div>
 
         <br />
 
-        <div data-bind="if: lastName">
-            <h2><span id="fullName" class="alert-success" data-bind="text: displayFullName"></span></h2>
+        <div data-bind="if: last">
+            <h2><span id="fullName" class="alert-success" data-bind="text: displayFull"></span></h2>
         </div>
+
         <br />
+
     </div>
 
 
     <script>
         function PersonViewModel() {
-            this.firtName = ko.observable(""); 
-            this.lastName = ko.observable(""); 
-            this.fullName = ko.pureComputed(function () {
+            this.name = ko.observable("");
+            this.last = ko.observable("");
+            this.displayName = ko.pureComputed(function () {
                 return this.name();
             }, this);
-            
-            this.displayBook = ko.pureComputed(function () {
-                return this.name() + " by " + this.author();
+
+            this.displayFull = ko.pureComputed(function () {
+                return this.name() + "\n" + this.last();
             }, this);
         }
         ko.applyBindings(new PersonViewModel()); 
