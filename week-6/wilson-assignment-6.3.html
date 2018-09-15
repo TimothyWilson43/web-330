@@ -34,8 +34,8 @@
 
         <br />
         <div class="form-group">
-            <label for="txtFirstName">First Name:</label>
-            <input type="text" class="form-control alert-warning" data-bind="value: firstName" id="txtFirstName">
+            <label for="txtQuestionOne">Question One</label>
+            <input type="checkbox" class="form-control" data-bind="value: questionOne" id="txtQuestionOne">
         </div>
 
         <div class="form-group">
@@ -50,13 +50,13 @@
 
     <script>
 
-        var personViewModel = {
-            firstName: "Abraham",
+        var triviaViewModel = {
+            questionOne: "Javascript Trivia Question One",
             lastName: "Lincoln",
             email: "alincoln@domain.com"
         };
 
-        ko.applyBindings(personViewModel);
+        ko.applyBindings(triviaViewModel);
 
     </script>
 
